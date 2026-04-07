@@ -3,168 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE DOG ARCHIVE</title>
+    <title>DESTINY DOG: 운명의 동반자를 찾아서</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide-static/0.321.0/lucide.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500&display=swap');
-        body { font-family: 'Noto Serif KR', serif; background-color: #F8F4F0; color: #333; }
-        .lux-card img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .lux-card:hover img { transform: scale(1.05); }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700&display=swap');
+        body { font-family: 'Noto Serif KR', serif; background-color: #1a1a1a; color: #fff; overflow-x: hidden; }
+        .parallax { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
+        .lux-card { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .lux-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .fade-in { animation: fadeIn 1.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl tracking-[0.2em] font-medium text-stone-800">THE DOG ARCHIVE</h1>
-            <div class="hidden md:flex space-x-12 text-sm tracking-widest text-stone-600">
-                <a href="#small" class="hover:text-stone-900 transition flex items-center gap-2 underline decoration-stone-200 underline-offset-8">소형견</a>
-                <a href="#medium" class="hover:text-stone-900 transition flex items-center gap-2">중형견</a>
-                <a href="#large" class="hover:text-stone-900 transition flex items-center gap-2">대형견</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="max-w-7xl mx-auto px-6 pt-12">
-        <div class="relative overflow-hidden rounded-sm aspect-[21/9]">
-            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=2000" alt="Dogs" class="w-full h-full object-cover">
-        </div>
-        <div class="text-center py-20 space-y-6">
-            <h2 class="text-3xl md:text-4xl leading-tight font-light tracking-tight italic">작은 몸짓에서 묻어나는 무한한 사랑</h2>
-            <p class="max-w-2xl mx-auto text-stone-500 leading-relaxed text-sm md:text-base">
-                우리의 걸음에 맞춰 걷는 가장 따뜻한 숨결, 그 위대한 동반의 기록.<br>
-                당신의 라이프스타일에 어울리는 완벽한 동반자를 찾아가는 우아한 여정을 시작하세요.
+    <section class="parallax min-h-screen relative flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=2000');">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative text-center z-10 p-8 space-y-6 fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight italic">DESTINY DOG</h1>
+            <p class="max-w-xl mx-auto text-xl text-stone-300 leading-relaxed font-light">
+                세상에 수많은 숨결 중, 당신의 라이프스타일과 영혼을 공유할<br>
+                단 하나의 운명적인 파트너를 만나는 여정.
             </p>
+            <a href="#mbti" class="inline-block mt-8 px-10 py-4 bg-white text-black text-sm tracking-widest uppercase hover:bg-stone-200 transition">나의 동반자 찾기 (MBTI)</a>
         </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-6 space-y-32 pb-32">
-        
-        <section id="small" class="space-y-12">
-            <div class="border-t border-stone-300 pt-12 flex justify-between items-end">
-                <h3 class="text-2xl font-light tracking-widest text-stone-800">소형견 SMALL</h3>
-                <span class="text-xs text-stone-400">Total 5 Breeds</span>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1533238616458-2fe33e210e7c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">말티즈</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">이탈리아 / 기원전 500년</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 활발하고 질투심이 많음<br>어울리는 사람: 노인, 아파트 거주자</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1591768575198-88dac53fbd0a?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">푸들</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">프랑스 / 16세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 지능이 매우 높고 영리함<br>어울리는 사람: 초보 반려인, 알러지 환자</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1523626797181-8c5ae80d40c2?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">포메라니안</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">독일 / 18세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 호기심이 많고 대담함<br>어울리는 사람: 1인 가구, 외근이 적은 직장인</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">치와와</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">멕시코 / 19세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 충성심이 강하고 용감함<br>어울리는 사람: 정적인 활동을 선호하는 분</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">시츄</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">중국 / 17세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 온순하고 게으른 매력<br>어울리는 사람: 여유로운 주말을 즐기는 학생</p>
-                </div>
-            </div>
-        </section>
+    <section class="max-w-7xl mx-auto px-6 py-32 grid md:grid-cols-2 gap-16 items-center">
+        <div class="space-y-6">
+            <span class="text-xs text-stone-500 uppercase tracking-widest">CHAPTER 1: THE SYMPHONY OF COMPANIONSHIP</span>
+            <h2 class="text-3xl font-medium tracking-tight leading-snug">작은 몸짓이 건네는<br>위대한 사랑의 서막</h2>
+            <p class="text-stone-400 leading-relaxed">
+                강아지의 크기는 상관없습니다. 중요한 건 그들의 눈빛이 건네는 무한한 신뢰와 당신의 하루를 온전히 감싸주는 따뜻한 온기입니다. 소형견의 섬세함부터 대형견의 든든함까지, 각 품종은 고유한 이야기를 담고 있습니다.<br><br>
+                우리는 그 이야기 속에서 당신에게 꼭 맞는 완벽한 '운명의 반쪽'을 찾는 가이드가 되어 드립니다.
+            </p>
+        </div>
+        <div class="lux-card rounded-sm overflow-hidden aspect-[4/5] shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover">
+        </div>
+    </section>
 
-        <section id="medium" class="space-y-12">
-            <div class="border-t border-stone-300 pt-12 flex justify-between items-end">
-                <h3 class="text-2xl font-light tracking-widest text-stone-800">중형견 MEDIUM</h3>
-                <span class="text-xs text-stone-400">Total 5 Breeds</span>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">시바견</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">일본 / 기원전 300년</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 독립적이고 깔끔함<br>어울리는 사람: 단호한 교육이 가능한 사람</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1519098901907-287ddde30e13?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">웰시코기</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">영국 / 12세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 지적이고 사교적임<br>어울리는 사람: 활동적인 야외 활동가</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">비글</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">영국 / 11세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 낙천적이고 에너지가 넘침<br>어울리는 사람: 마당이 있는 집, 어린 자녀</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">코카 스파니엘</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">영국/미국 / 19세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 다정다감하고 장난기 많음<br>어울리는 사람: 산책을 매일 즐기는 직장인</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">보더콜리</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">영국 / 19세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 지능 1위, 열정적인 일꾼<br>어울리는 사람: 어질리티 숙련자, 다재다능형</p>
-                </div>
-            </div>
-        </section>
+    <section id="mbti" class="bg-stone-900/50 py-32 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-20">
+            <h2 class="text-4xl font-light tracking-widest text-white mb-6">운명의 동반자를 찾아서 (MBTI)</h2>
+            <p class="max-w-xl mx-auto text-stone-400 text-sm leading-relaxed">당신의 성향과 라이프스타일에 어울리는 완벽한 강아지를 추천해 드립니다.<br>각 질문에 솔직하게 답해 주세요.</p>
+        </div>
 
-        <section id="large" class="space-y-12">
-            <div class="border-t border-stone-300 pt-12 flex justify-between items-end">
-                <h3 class="text-2xl font-light tracking-widest text-stone-800">대형견 LARGE</h3>
-                <span class="text-xs text-stone-400">Total 5 Breeds</span>
+        <div id="quiz-container" class="max-w-3xl mx-auto bg-stone-950 p-12 rounded-sm border border-stone-800 space-y-12">
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">골든 리트리버</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">영국 / 19세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 인내심 강한 '천사견'<br>어울리는 사람: 대가족, 전원주택 거주자</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1529429617329-8a79b0579756?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">사모예드</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">러시아 / 고대종</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: '웃는 얼굴', 사교적임<br>어울리는 사람: 활동적이고 추위를 타지 않는 사람</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">시베리안 허스키</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">시베리아 / 고대종</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 호기심이 많고 에너제틱함<br>어울리는 사람: 운동을 규칙적으로 하는 분</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">저먼 셰퍼드</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">독일 / 19세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 용맹하고 지능적인 수호자<br>어울리는 사람: 전문 훈련이 가능한 보호자</p>
-                </div>
-                <div class="lux-card group">
-                    <div class="aspect-square bg-white mb-6 overflow-hidden"><img src="https://images.unsplash.com/photo-1563883494774-007323d3271a?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
-                    <h4 class="font-medium text-lg mb-2">달마시안</h4>
-                    <p class="text-xs text-stone-400 mb-4 italic">크로아티아 / 18세기</p>
-                    <p class="text-[13px] text-stone-600 leading-relaxed">성격: 지구력이 좋고 강직함<br>어울리는 사람: 러닝 파트너가 필요한 분</p>
-                </div>
-            </div>
-        </section>
-    </div>
 
-    <footer class="bg-white py-20 border-t border-stone-200">
+        <div id="result-container" class="max-w-3xl mx-auto bg-stone-950 p-12 rounded-sm border border-stone-800 mt-12 hidden text-center space-y-8">
+            <h3 class="text-2xl font-medium">당신의 완벽한 동반자는...</h3>
+            <div class="aspect-square bg-stone-800 max-w-sm mx-auto overflow-hidden rounded-sm"><img id="result-img" class="w-full h-full object-cover"></div>
+            <h4 id="result-name" class="text-xl font-bold text-white">강아지 이름</h4>
+            <p id="result-desc" class="text-stone-400 leading-relaxed text-sm">추천 이유 설명</p>
+            <button onclick="resetQuiz()" class="mt-8 px-8 py-3 bg-stone-800 text-white text-sm tracking-widest uppercase hover:bg-stone-700 transition">다시 테스트하기</button>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-32 space-y-16">
+        <div class="border-t border-stone-800 pt-16 text-center">
+            <h2 class="text-3xl font-light tracking-widest text-white">품종 아카이브 (ARCHIVE)</h2>
+            <p class="text-stone-500 text-xs mt-3 uppercase tracking-widest">Total 15 Iconic Breeds</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="lux-card group bg-stone-950 p-6 border border-stone-800 rounded-sm">
+                <div class="aspect-square bg-stone-800 mb-6 overflow-hidden rounded-sm"><img src="https://images.unsplash.com/photo-1533238616458-2fe33e210e7c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover"></div>
+                <h4 class="font-medium text-lg mb-2 text-white">말티즈</h4>
+                <p class="text-xs text-stone-500 mb-4 italic">소형견 / 이탈리아</p>
+                <p class="text-[13px] text-stone-400 leading-relaxed">성격: 활발하고 사랑받길 원함<br>MBTI: ESFP형 보호자와 찰떡궁합</p>
+            </div>
+            </div>
+    </section>
+
+    <footer class="bg-black py-20 border-t border-stone-800">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-xl tracking-[0.2em] font-medium mb-8">THE DOG ARCHIVE</h2>
-            <p class="text-xs text-stone-400 tracking-widest uppercase">© 2026 Crafted for Professional Media Planners</p>
+            <h2 class="text-xl tracking-[0.2em] font-medium mb-8">DESTINY DOG</h2>
+            <p class="text-xs text-stone-600 tracking-widest uppercase">© 2026 Crafted for Professional Media Planners</p>
         </div>
     </footer>
 
+    <script>
+        const quizData = [
+            { question: "주말에 더 선호하는 활동은?", answers: [{text: "친구들과 야외 활동", type: "E"}, {text: "집에서 조용히 휴식", type: "I"}] },
+            { question: "새로운 강아지를 만났을 때 먼저 드는 생각은?", answers: [{text: "어떤 놀이를 좋아할까?", type: "S"}, {text: "이 강아지의 유래는 뭘까?", type: "N"}] },
+            { question: "강아지의 교육 방침은?", answers: [{text: "단호하고 일관성 있게", type: "T"}, {text: "다정하고 칭찬 중심으로", type: "F"}] },
+            { question: "산책 스타일은?", answers: [{text: "매일 정해진 시간에 규칙적으로", type: "J"}, {text: "그날 기분에 따라 자유롭게", type: "P"}] }
+        ];
+
+        const dogRecommendations = {
+            "ESTP": { name: "치와와", img: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&q=80&w=600", desc: "도전적이고 즉흥적인 당신에게, 용감하고 에너지 넘치는 작은 거인 치와와가 딱 맞아요!" },
+            "ENFP": { name: "웰시코기", img: "https://images.unsplash.com/photo-1519098901907-287ddde30e13?auto=format&fit=crop&q=80&w=600", desc: "사교적이고 창의적인 당신에게, 장난기 많고 사랑스러운 웰시코기가 매일 웃음을 선사할 거예요." },
+            "ISTJ": { name: "저먼 셰퍼드", img: "https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&q=80&w=600", desc: "체계적이고 책임감 강한 당신에게, 충성심 강하고 영리한 수호자 저먼 셰퍼드가 완벽한 파트너입니다." },
+            "INFJ": { name: "보더콜리", img: "https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?auto=format&fit=crop&q=80&w=600", desc: "섬세하고 이상적인 당신에게, 가장 영리하고 교감이 잘 되는 열정가 보더콜리가 어울립니다." },
+            // ... (add other MBTI types for comprehensive recommendations) ...
+            "ISFP": { name: "시츄", img: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=600", desc: "온순하고 게으른 매력을 사랑하는 당신에게, 다정다감한 시츄가 최고의 힐링을 선사할 거예요." }
+        };
+
+        let currentQuestion = 0;
+        let score = {E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0};
+
+        function showQuestion() {
+            const quizContainer = document.getElementById('quiz-container');
+            const data = quizData[currentQuestion];
+            quizContainer.innerHTML = `
+                <div class="text-center space-y-6">
+                    <span class="text-xs text-stone-500 uppercase tracking-widest">QUESTION ${currentQuestion + 1}/${quizData.length}</span>
+                    <h4 class="text-xl font-medium tracking-tight text-white">${data.question}</h4>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    ${data.answers.map((ans, index) => `<button onclick="nextQuestion('${ans.type}')" class="px-6 py-4 bg-stone-800 text-stone-300 text-sm tracking-widest uppercase hover:bg-stone-700 transition">${ans.text}</button>`).join('')}
+                </div>
+            `;
+        }
+
+        function nextQuestion(type) {
+            score[type]++;
+            currentQuestion++;
+            if(currentQuestion < quizData.length) { showQuestion(); } else { showResult(); }
+        }
+
+        function showResult() {
+            const mbti = `${score.E >= score.I ? 'E' : 'I'}${score.S >= score.N ? 'S' : 'N'}${score.T >= score.F ? 'T' : 'F'}${score.J >= score.P ? 'J' : 'P'}`;
+            const quizContainer = document.getElementById('quiz-container');
+            const resultContainer = document.getElementById('result-container');
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+
+            const dog = dogRecommendations[mbti] || dogRecommendations["ISFP"]; // Fallback to ISFP
+            document.getElementById('result-img').src = dog.img;
+            document.getElementById('result-name').innerText = `${dog.name} (${mbti}형)`;
+            document.getElementById('result-desc').innerText = dog.desc;
+        }
+
+        function resetQuiz() {
+            currentQuestion = 0; score = {E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0};
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('result-container').classList.add('hidden');
+            showQuestion();
+        }
+
+        showQuestion(); // Start quiz
+    </script>
 </body>
 </html>
