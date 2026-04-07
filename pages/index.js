@@ -7,7 +7,7 @@ const dogs = [
   { id: 7, category: 'Medium', name: '웰시코기', desc: '지능적이고 사교적임', img: 'https://images.unsplash.com/photo-1519098901907-287ddde30e13?w=600' },
   { id: 11, category: 'Large', name: '골든 리트리버', desc: '천사견 인내심 최강', img: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=600' },
   { id: 12, category: 'Large', name: '사모예드', desc: '미소천사 활동가', img: 'https://images.unsplash.com/photo-1529429617329-8a79b0579756?w=600' },
-  { id: 13, category: 'Large', name: '시베리안 허스키', desc: '강한 지구력의 소유자', img: 'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600' },
+  { id: 13, category: 'Large', name: '시베리안 허스키', desc: '강한 지구력의 소유자', img: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600' },
   { id: 14, category: 'Large', name: '저먼 셰퍼드', desc: '용맹하고 영리한 수호자', img: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=600' },
   { id: 15, category: 'Large', name: '달마시안', desc: '강직한 러닝 파트너', img: 'https://images.unsplash.com/photo-1563883494774-007323d3271a?w=600' }
 ];
@@ -37,7 +37,6 @@ export default function DogArchive() {
   };
 
   const getResult = () => {
-    // 가장 점수 높은 강아지 매칭 (간단 버전: E가 많으면 리트리버, I가 많으면 말티즈)
     return scores.E >= scores.I ? dogs[4] : dogs[0];
   };
 
@@ -88,13 +87,13 @@ export default function DogArchive() {
         <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '40px', color: '#1c1917', textAlign: 'center' }}>DOG COLLECTION</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '40px' }}>
           {dogs.map(dog => (
-            <div key={dog.id} style={{ backgroundColor: 'white', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid #f5f5f4' }}>
-              <div style={{ height: '320px' }}>
+            <div key={dog.id} style={{ backgroundColor: 'white', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid #e5e5e0' }}>
+              <div style={{ height: '320px', width: '100%' }}>
                 <img src={dog.img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={dog.name} />
               </div>
               <div style={{ padding: '30px' }}>
-                <div style={{ display: 'inline-block', padding: '4px 12px', backgroundColor: '#fff7ed', borderRadius: '20px', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '11px', color: '#ea580c', fontWeight: 'bold', letterSpacing: '1px' }}>{dog.category}</span>
+                <div style={{ display: 'inline-block', padding: '6px 14px', backgroundColor: '#ea580c', borderRadius: '20px', marginBottom: '12px' }}>
+                  <span style={{ fontSize: '12px', color: 'white', fontWeight: 'bold', letterSpacing: '0.5px' }}>{dog.category}</span>
                 </div>
                 <h3 style={{ fontSize: '22px', fontWeight: 'bold', color: '#1c1917' }}>{dog.name}</h3>
                 <p style={{ fontSize: '15px', color: '#78716c', marginTop: '12px', lineHeight: '1.6' }}>{dog.desc}</p>
