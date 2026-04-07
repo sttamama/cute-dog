@@ -12,20 +12,44 @@ const dogs = [
   { id: 15, category: 'Large', name: '달마시안', desc: '강직한 러닝 파트너', img: 'https://images.unsplash.com/photo-1563883494774-007323d3271a?w=600' }
 ];
 
+const questions = [
+  { id: 1, q: "주말에는 주로 무엇을 하시나요?", a: "밖으로 나간다", b: "집에서 쉰다", type: "EI" },
+  { id: 2, q: "새로운 일을 시작할 때 당신은?", a: "일단 해본다", b: "철저히 계획한다", type: "SN" },
+  { id: 3, q: "친구의 고민을 들었을 때 당신은?", a: "현실적인 조언", b: "깊은 감정 공감", type: "TF" },
+  { id: 4, q: "약속 장소에 도착하는 스타일은?", a: "딱 맞춰 가거나 일찍", b: "유동적으로 도착", type: "JP" }
+];
+
 export default function DogArchive() {
   const [step, setStep] = useState('home');
-  const [mbti, setMbti] = useState('');
+  const [currentQ, setCurrentQ] = useState(0);
+  const [scores, setScores] = useState({ E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 });
 
-  const startQuiz = () => { setStep('quiz'); setMbti(''); };
+  const handleAnswer = (choice) => {
+    const type = questions[currentQ].type;
+    const answerType = choice === 'a' ? type[0] : type[1];
+    setScores({ ...scores, [answerType]: scores[answerType] + 1 });
+
+    if (currentQ < questions.length - 1) {
+      setCurrentQ(currentQ + 1);
+    } else {
+      setStep('result');
+    }
+  };
+
+  const getResult = () => {
+    // 가장 점수 높은 강아지 매칭 (간단 버전: E가 많으면 리트리버, I가 많으면 말티즈)
+    return scores.E >= scores.I ? dogs[4] : dogs[0];
+  };
 
   if (step === 'quiz') {
     return (
       <div style={{ minHeight: '100vh', backgroundColor: '#F8F4F0', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', fontFamily: 'sans-serif' }}>
         <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '24px', boxShadow: '0 10px 25px rgba(0,0,0,0.1)', maxWidth: '400px', width: '100%', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '30px', color: '#1c1917' }}>당신의 성향은?</h2>
+          <span style={{ fontSize: '12px', color: '#ea580c', fontWeight: 'bold' }}>QUESTION {currentQ + 1}/4</span>
+          <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: '20px 0 30px', color: '#1c1917' }}>{questions[currentQ].q}</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <button onClick={() => { setMbti('E'); setStep('result'); }} style={{ padding: '15px', backgroundColor: '#1c1917', color: 'white', borderRadius: '12px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>야외 활동이 좋다</button>
-            <button onClick={() => { setMbti('I'); setStep('result'); }} style={{ padding: '15px', border: '2px solid #1c1917', backgroundColor: 'transparent', color: '#1c1917', borderRadius: '12px', cursor: 'pointer', fontWeight: 'bold' }}>집에서 쉬는 게 좋다</button>
+            <button onClick={() => handleAnswer('a')} style={{ padding: '18px', backgroundColor: '#1c1917', color: 'white', borderRadius: '15px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>{questions[currentQ].a}</button>
+            <button onClick={() => handleAnswer('b')} style={{ padding: '18px', border: '2px solid #1c1917', backgroundColor: 'transparent', color: '#1c1917', borderRadius: '15px', cursor: 'pointer', fontWeight: 'bold' }}>{questions[currentQ].b}</button>
           </div>
         </div>
       </div>
@@ -33,16 +57,16 @@ export default function DogArchive() {
   }
 
   if (step === 'result') {
-    const resultDog = mbti === 'E' ? dogs[4] : dogs[0];
+    const resultDog = getResult();
     return (
       <div style={{ minHeight: '100vh', backgroundColor: '#F8F4F0', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', textAlign: 'center', fontFamily: 'sans-serif' }}>
         <div>
-          <h2 style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '20px', color: '#1c1917' }}>당신은 {resultDog.name} 타입!</h2>
+          <h2 style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '20px', color: '#1c1917' }}>당신의 운명은 {resultDog.name}!</h2>
           <div style={{ width: '250px', height: '250px', margin: '0 auto 20px', borderRadius: '50%', border: '8px solid white', overflow: 'hidden', boxShadow: '0 15px 35px rgba(0,0,0,0.2)' }}>
             <img src={resultDog.img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={resultDog.name} />
           </div>
-          <p style={{ color: '#78716c', marginBottom: '30px' }}>{resultDog.desc}</p>
-          <button onClick={() => setStep('home')} style={{ backgroundColor: 'transparent', border: 'none', color: '#a8a29e', textDecoration: 'underline', cursor: 'pointer' }}>처음으로</button>
+          <p style={{ color: '#78716c', marginBottom: '30px', maxWidth: '300px', margin: '0 auto 30px' }}>{resultDog.desc}</p>
+          <button onClick={() => {setStep('home'); setCurrentQ(0); setScores({ E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 });}} style={{ backgroundColor: 'transparent', border: 'none', color: '#a8a29e', textDecoration: 'underline', cursor: 'pointer' }}>처음으로 돌아가기</button>
         </div>
       </div>
     );
@@ -50,26 +74,30 @@ export default function DogArchive() {
 
   return (
     <div style={{ backgroundColor: '#F8F4F0', minHeight: '100vh', fontFamily: 'sans-serif' }}>
-      <header style={{ height: '40vh', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <header style={{ height: '45vh', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} alt="Hero" />
-        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.4)' }}></div>
-        <div style={{ relative: 'absolute', textAlign: 'center', color: 'white', zIndex: 1 }}>
-          <h1 style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '20px' }}>THE DOG ARCHIVE</h1>
-          <button onClick={startQuiz} style={{ padding: '12px 35px', backgroundColor: 'white', color: 'black', borderRadius: '30px', border: 'none', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}>MBTI TEST START</button>
+        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.45)' }}></div>
+        <div style={{ position: 'relative', textAlign: 'center', color: 'white', zIndex: 1 }}>
+          <h1 style={{ fontSize: '56px', fontWeight: 'bold', letterSpacing: '-2px', marginBottom: '15px' }}>THE DOG ARCHIVE</h1>
+          <p style={{ fontSize: '18px', opacity: 0.9, marginBottom: '30px' }}>나와 꼭 닮은 강아지는 누구일까요?</p>
+          <button onClick={() => setStep('quiz')} style={{ padding: '15px 45px', backgroundColor: '#ea580c', color: 'white', borderRadius: '40px', border: 'none', fontSize: '18px', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 10px 20px rgba(0,0,0,0.2)' }}>MBTI TEST START</button>
         </div>
       </header>
 
-      <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '60px 20px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '30px' }}>
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '80px 24px' }}>
+        <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '40px', color: '#1c1917', textAlign: 'center' }}>DOG COLLECTION</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '40px' }}>
           {dogs.map(dog => (
-            <div key={dog.id} style={{ backgroundColor: 'white', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', border: '1px solid #f5f5f4' }}>
-              <div style={{ height: '300px' }}>
+            <div key={dog.id} style={{ backgroundColor: 'white', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid #f5f5f4' }}>
+              <div style={{ height: '320px' }}>
                 <img src={dog.img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={dog.name} />
               </div>
-              <div style={{ padding: '25px' }}>
-                <span style={{ fontSize: '10px', color: '#ea580c', fontWeight: 'bold', letterSpacing: '2px' }}>{dog.category}</span>
-                <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginTop: '5px' }}>{dog.name}</h3>
-                <p style={{ fontSize: '14px', color: '#78716c', marginTop: '10px' }}>{dog.desc}</p>
+              <div style={{ padding: '30px' }}>
+                <div style={{ display: 'inline-block', padding: '4px 12px', backgroundColor: '#fff7ed', borderRadius: '20px', marginBottom: '10px' }}>
+                  <span style={{ fontSize: '11px', color: '#ea580c', fontWeight: 'bold', letterSpacing: '1px' }}>{dog.category}</span>
+                </div>
+                <h3 style={{ fontSize: '22px', fontWeight: 'bold', color: '#1c1917' }}>{dog.name}</h3>
+                <p style={{ fontSize: '15px', color: '#78716c', marginTop: '12px', lineHeight: '1.6' }}>{dog.desc}</p>
               </div>
             </div>
           ))}
